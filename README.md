@@ -1,6 +1,5 @@
 # Hotel Booking Cancellation Prediction
 
-- **Team:** _team name_
 - **Course:** Machine Learning [P375], CUNEF Universidad
 - **Repository:** https://github.com/martinmon19/Assignment-MACHINE-LEARNING
 
@@ -15,7 +14,7 @@
 
 Hotels lose revenue when bookings are cancelled: a room that was blocked for weeks may end up empty,
 and last-minute cancellations are hard to resell. In this dataset, about 37% of all bookings
-(27.7% after removing duplicates) end in a cancellation or no-show.
+(27.7% after cleaning the data) end in a cancellation or no-show.
 
 Hotels usually react with general policies:
 - **Overbooking** based on an average cancellation rate. If the estimate is wrong, the hotel either
