@@ -80,15 +80,14 @@ which is used by the other two notebooks.
 - 31,994 exact duplicates (26.8%) removed: without a booking ID they could repeat the same booking
   in training and test sets. The cancellation rate drops from 37.0% to 27.5%.
 - Missing values filled: `children` (0), `country` (*Unknown*), `agent` (*No agent*), `company` (*No company*).
-- Erroneous bookings removed: negative rate, 0-night stays, bookings with no guests and extreme guest counts.
-- Final dataset: 86,622 bookings.
+- Erroneous bookings removed: negative rate, one rate of 5,400 (a data entry error), 0-night stays, bookings with no guests and extreme guest counts.
+- Final dataset: 86,621 bookings.
 
 **Outliers (`02_outliers`)**
 - Extreme values in `adr`, `lead_time` and total nights detected with the 1.5 × IQR rule, with
   limits computed **per hotel** because their distributions differ (e.g. 7-night stays are 17% of
   resort bookings but 3.5% of city bookings).
-- 6,442 bookings (7.4%) flagged. After review, only one is excluded (a rate of 5,400, a data entry
-  error); the rest are rare but plausible (groups booking far in advance, long holiday stays, free stays).
+- 6,441 bookings (7.4%) flagged. They are rare but plausible (groups booking far in advance, long holiday stays, free stays) and are kept; the only clear error, a rate of 5,400, was already removed in `01_cleaning`.
 - Flagged bookings are cancelled more often (40.5% vs 26.7%), especially long stays and long lead
   times, so extreme values carry useful information for the model.
 
