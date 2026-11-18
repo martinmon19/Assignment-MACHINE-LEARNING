@@ -4,7 +4,7 @@
 - **Repository:** https://github.com/martinmon19/Assignment-MACHINE-LEARNING
 
 **Authors**
-- Martín Monasterio (_cunef email_)
+- Martín Monasterio (martin.monasterio@cunef.edu)
 - Jorge Carro (_cunef email_)
 - Javier González (_cunef email_)
 
