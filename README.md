@@ -5,8 +5,8 @@
 
 **Authors**
 - Martín Monasterio (martin.monasterio@cunef.edu)
-- Jorge Carro (j.gonzalezdimas@cunef.edu)
-- Javier González (jorge.carro@cunef.edu)
+- Javier González (j.gonzalezdimas@cunef.edu)
+- Jorge Carro (jorge.carro@cunef.edu)
 
 ---
 
