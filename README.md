@@ -5,8 +5,8 @@
 
 **Authors**
 - Martín Monasterio (martin.monasterio@cunef.edu)
-- Jorge Carro (_cunef email_)
-- Javier González (_cunef email_)
+- Jorge Carro (j.gonzalezdimas@cunef.edu)
+- Javier González (jorge.carro@cunef.edu)
 
 ---
 
@@ -93,4 +93,16 @@ which is used by the other two notebooks.
   times, so extreme values carry useful information for the model.
 
 **Distributions (`03_distributions`)**
-- _To be completed._
+- Cancellation rate rises with **lead time** (8.5% for bookings made a week or less ahead vs about 40%
+  for more than six months) and with **price** (15.6% below 50 per night vs 37.6% above 200).
+- **Customer history** separates the classes strongly: customers who cancelled before cancel again
+  68.2% of the time, while repeated guests (8.2%) and customers with previous stays (5.0%) rarely cancel.
+- Individual online bookings cancel the most (*Online TA* 35.5%); bookings with an agreement cancel much
+  less (*Corporate* 12.2%, *Group* 7.6%). The City Hotel cancels more than the Resort Hotel (30.2% vs 23.7%),
+  and cancellations peak in summer.
+- *Non Refund* deposits are cancelled 94.7% of the time: they are mostly group and agency blocks, not
+  individual customers.
+- **Leakage candidates:** parking (0% cancellations), `assigned_room_type`, `booking_changes` and
+  `days_in_waiting_list` may only be known after booking; they are reviewed in section 5.
+- Actions: mostly-zero counts turned into yes/no variables, rare categories grouped into "Other"
+  (top 10 countries and agents), "Undefined" merged into "SC" in `meal`.
