@@ -52,13 +52,27 @@ The `data/` folder is empty in this repository on purpose.
 
 - **Type of problem:** supervised learning, **binary classification**.
 - **Target:** `is_canceled` (1 = cancelled or no-show, 0 = checked out).
-- **Features:** booking information known at the time of booking: hotel, lead time, arrival date,
-  length of stay, guests, meal, country, market segment, distribution channel, customer history,
-  room type, deposit type, customer type, daily rate (`adr`), parking and special requests.
-- **Excluded features (data leakage):** `reservation_status` matches the target exactly
-  (*Canceled* and *No-Show* → 1, *Check-Out* → 0) and `reservation_status_date` is recorded after
-  the outcome. Using them would give a perfect but useless model.
-- **Class balance:** _to be completed with the result of `03_distributions`._
+- **Features:** 23 columns known at the time of booking: `hotel`, `lead_time`, `arrival_date_month`,
+  `arrival_date_day_of_month`, `stays_in_weekend_nights`, `stays_in_week_nights`, `adults`,
+  `children`, `babies`, `meal`, `country`, `market_segment`, `distribution_channel`,
+  `is_repeated_guest`, `previous_cancellations`, `previous_bookings_not_canceled`,
+  `reserved_room_type`, `deposit_type`, `agent`, `company`, `customer_type`, `adr` and
+  `total_of_special_requests`. Each booking $i$ is described by a feature vector
+  $\mathbf{x}_i = (x_{i1}, \dots, x_{ip})$ with $p = 23$, and the model estimates
+  $P(y = 1 \mid \mathbf{x})$.
+- **Excluded features:**
+  - *Leakage, outcome:* `reservation_status` matches the target exactly (*Canceled* and *No-Show* → 1,
+    *Check-Out* → 0) and `reservation_status_date` is the date of that final status. Using them would
+    give a perfect but useless model.
+  - *Leakage, recorded after the booking:* `assigned_room_type` (decided by the hotel, often at
+    check-in), `required_car_parking_spaces` (none of the 7,290 bookings that asked for parking was
+    cancelled), `booking_changes` (counted until check-in or cancellation) and `days_in_waiting_list`
+    (fixed once the booking is confirmed).
+  - *Other reasons:* `arrival_date_year` (a model is applied to future years) and
+    `arrival_date_week_number` (repeats the month).
+- **Class balance:** 27.7% of the 86,621 clean bookings are cancelled and 72.3% are not. Always
+  predicting "not cancelled" already gives 72.3% accuracy, so models will be evaluated with recall,
+  precision and AUC as well as accuracy, using a stratified train/test split.
 
 ## 4. Project structure
 
@@ -101,7 +115,8 @@ which is used by the other two notebooks.
   and cancellations peak in summer.
 - *Non Refund* deposits are cancelled 94.7% of the time: they are mostly group and agency blocks, not
   individual customers.
-- **Leakage candidates:** parking (0% cancellations), `assigned_room_type`, `booking_changes` and
-  `days_in_waiting_list` may only be known after booking; they are reviewed in section 5.
+- **Leakage check:** besides `reservation_status` and its date, four columns are recorded or updated
+  after the booking is made and are excluded: `assigned_room_type`, `required_car_parking_spaces`
+  (0% cancellations), `booking_changes` and `days_in_waiting_list`. 23 candidate features remain.
 - Actions: mostly-zero counts turned into yes/no variables, rare categories grouped into "Other"
   (top 10 countries and agents), "Undefined" merged into "SC" in `meal`.
