@@ -102,7 +102,7 @@ which is used by the other two notebooks.
   limits computed **per hotel** because their distributions differ (e.g. 7-night stays are 17% of
   resort bookings but 3.5% of city bookings).
 - 6,441 bookings (7.4%) flagged. They are rare but plausible (groups booking far in advance, long holiday stays, free stays) and are kept; the only clear error, a rate of 5,400, was already removed in `01_cleaning`.
-- Flagged bookings are cancelled more often (40.5% vs 26.7%), especially long stays and long lead
+- Flagged bookings are cancelled more often (40.5% vs 26.6%), especially long stays and long lead
   times, so extreme values carry useful information for the model.
 
 **Distributions (`03_distributions`)**
