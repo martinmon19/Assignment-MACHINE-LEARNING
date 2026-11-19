@@ -57,7 +57,7 @@ The `data/` folder is empty in this repository on purpose.
   `children`, `babies`, `meal`, `country`, `market_segment`, `distribution_channel`,
   `is_repeated_guest`, `previous_cancellations`, `previous_bookings_not_canceled`,
   `reserved_room_type`, `deposit_type`, `agent`, `company`, `customer_type`, `adr` and
-  `total_of_special_requests`.   `total_of_special_requests`. Each booking is described by these 23 features, and the model
+  `total_of_special_requests`. Each booking is described by these 23 features, and the model
   estimates the probability that it is cancelled, P(is_canceled = 1 | features).
 - **Excluded features:**
   - *Leakage, outcome:* `reservation_status` matches the target exactly (*Canceled* and *No-Show* → 1,
